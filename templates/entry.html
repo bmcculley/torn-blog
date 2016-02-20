@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <div class="post">
+	  <h2 class="post-title">{{ entry.title }}</h2>
+	  <div class="post-date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>
+	  <div class="body">{% raw entry.html %}</div>
+	  {% if current_user and current_user.access_level == 10 %}
+	    <div class="meta admin"><a href="/compose?id={{ entry.id }}">{{ _("Edit this post") }}</a></div>
+	  {% end %}
+  </div>
+  <div id="disqus_thread"></div>
+	<script>
+	    /**
+	     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+	     */
+	    var disqus_config = function () {
+	    	/*
+	        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+	    	*/
+	        this.page.identifier = {{ entry.id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	    };
+	    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+	        var d = document, s = d.createElement('script');
+	        
+	        s.src = '//demo.disqus.com/embed.js';
+	        
+	        s.setAttribute('data-timestamp', +new Date());
+	        (d.head || d.body).appendChild(s);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+{% end %}

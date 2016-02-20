@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form action="/auth/create" class="login-form" method="post">
+  <label for="email">Email:</label>
+  <input name="email" id="email" type="text">
+  <label for="name">Name:</label>
+  <input name="name" id="name" type="text">
+  <label for="password">Password:</label>
+  <input name="password" id="password" type="password">
+  {% module xsrf_form_html() %}
+  <input type="submit" class="btn" value="Create">
+</form>
+{% end %}
+
+{% block bottom %}
+<script type="text/javascript">
+	function emailFocus() {
+		document.getElementById("email").focus();
+	};
+	document.onload = emailFocus();
+</script>
+{% end %}

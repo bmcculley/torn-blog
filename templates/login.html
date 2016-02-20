@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% if error %}
+<span style="color: red">Error: {{ error }}</span><p>
+{% end %}
+
+<form action="/auth/login" class="login-form" method="post">
+  <label for="email">Email:</label>
+  <input name="email" id="email" type="text">
+  <label for="password">Password:</label>
+  <input name="password" id="password" type="password">
+  {% module xsrf_form_html() %}
+  <input type="submit" class="btn" value="Sign in">
+</form>
+{% end %}
+
+{% block bottom %}
+<script type="text/javascript">
+	function emailFocus() {
+		document.getElementById("email").focus();
+	};
+	document.onload = emailFocus();
+</script>
+{% end %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% for entry in entries %}
+    {% module Entry(entry) %}
+  {% end %}
+
+  <div class="pagination">
+    {% if prevpage %}
+  	 <span class="pagination-item older"><a href="./?page={{ prevpage }}">Previous </a></span>
+    {% end %}
+    {% if nextpage %}
+  	 <span class="pagination-item newer"><a href="./?page={{ nextpage }}">Next </a></span>
+    {% end %}
+  </div>
+{% end %}
+
+{% block bottom %}
+<script id="dsq-count-scr" src="//demo.disqus.com/count.js" async></script>
+{% end %}
