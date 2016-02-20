@@ -4,8 +4,7 @@ This demo is a simple blogging engine that uses MySQL to store posts.
 Since it depends on MySQL, you need to set up MySQL and the database 
 schema for the demo to run.
 
-If you have `docker` and `docker-compose` installed, the demo and all
-its prerequisites can be installed with `docker-compose up`.
+![tornblog screenshot](http://i.imgur.com/idWIpFN.png)
 
 1. Install prerequisites and build tornado
 
